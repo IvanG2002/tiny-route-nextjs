@@ -1,11 +1,16 @@
-import Links from "@/components/links"
+"use client";
 
-function dashboard() {
+import Links from "@/components/links";
+import ProtectedDashboard from "@/components/protected-dashboard";
+
+function Dashboard() {
   return (
-    <main className="p-5">
-      <Links></Links>
-    </main>
-  )
+    <ProtectedDashboard>
+      <main className="p-5">
+        <Links />
+      </main>
+    </ProtectedDashboard>
+  );
 }
 
-export default dashboard
+export default Dashboard;

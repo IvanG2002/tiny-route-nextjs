@@ -8,9 +8,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
+
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -27,6 +29,6 @@ model Url {
   original_url String
   short_code   String   @unique
   createdAt    DateTime @default(now())
-  userId       Int 
+  userId       Int
   user         User     @relation(fields: [userId], references: [id])
 }

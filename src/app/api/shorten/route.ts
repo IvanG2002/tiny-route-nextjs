@@ -24,9 +24,9 @@ export const POST = async (req: NextRequest) => {
         });
 
         // Devuelve la URL acortada
-        return NextResponse.json({ short_url: `http://localhost:3000/api/shorten/${short_code}` });
+        return NextResponse.json({ short_url: `https://tiny-route-app.vercel.app/api/shorten/${short_code}` });
     } catch (error) {
         console.error(error);
-        return NextResponse.json({ error: 'Error del servidor' }, { status: 500 });
+        return NextResponse.json({ error: 'Server error' }, { status: 500 });
     }
 };

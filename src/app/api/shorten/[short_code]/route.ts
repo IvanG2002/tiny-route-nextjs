@@ -16,13 +16,13 @@ export const GET = async (req: NextRequest, { params }: { params: { short_code: 
 
         // Si no se encuentra la URL, devuelve un 404
         if (!url) {
-            return NextResponse.json({ error: 'Enlace no encontrado' }, { status: 404 });
+            return NextResponse.json({ error: 'Link does not found' }, { status: 404 });
         }
 
         // Redirige a la URL original
         return NextResponse.redirect(url.original_url);
     } catch (error) {
         console.error(error);
-        return NextResponse.json({ error: 'Error del servidor' }, { status: 500 });
+        return NextResponse.json({ error: 'Server error' }, { status: 500 });
     }
 };

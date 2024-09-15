@@ -1,9 +1,14 @@
+"use client"
+
+import ProtectedDashboard from "@/components/protected-dashboard"
 
 function settings() {
   return (
-    <main className="p-5">
-      <span>settings</span>
-    </main>
+    <ProtectedDashboard>
+      <main className="p-5">
+        <span>settings</span>
+      </main>
+    </ProtectedDashboard>
   )
 }
 

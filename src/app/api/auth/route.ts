@@ -15,14 +15,14 @@ export const POST = async (req: NextRequest) => {
         });
 
         if (!user) {
-            return NextResponse.json({ error: 'Usuario no encontrado' }, { status: 404 });
+            return NextResponse.json({ error: 'User does not found' }, { status: 404 });
         }
 
         // Comparar la contraseña
         const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
 
         if (!isPasswordValid) {
-            return NextResponse.json({ error: 'Contraseña incorrecta' }, { status: 401 });
+            return NextResponse.json({ error: 'Wrong password' }, { status: 401 });
         }
 
         // Generar token JWT
@@ -32,9 +32,9 @@ export const POST = async (req: NextRequest) => {
             { expiresIn: '1h' }
         );
 
-        return NextResponse.json({ __id: user.id, message: 'Inicio de sesión exitoso', token }, { status: 200 });
+        return NextResponse.json({ __id: user.id, __name: user.name, __email: user.email, message: 'Log In successed', token }, { status: 200 });
     } catch (error) {
         console.error(error);
-        return NextResponse.json({ error: 'Error al iniciar sesión' }, { status: 500 });
+        return NextResponse.json({ error: 'Log In failed' }, { status: 500 });
     }
 };

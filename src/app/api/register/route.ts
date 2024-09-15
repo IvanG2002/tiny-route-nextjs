@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 export const POST = async (req: NextRequest) => {
-  const { name, email, password } = await req.json();
+  const { username, email, password } = await req.json();
 
   try {
     // Verificar si el usuario ya existe
@@ -14,7 +14,7 @@ export const POST = async (req: NextRequest) => {
     });
 
     if (existingUser) {
-      return NextResponse.json({ error: 'El usuario ya existe' }, { status: 400 });
+      return NextResponse.json({ error: 'User already exists' }, { status: 400 });
     }
 
     // Hashear la contraseña
@@ -23,15 +23,15 @@ export const POST = async (req: NextRequest) => {
     // Crear el usuario
     const newUser = await prisma.user.create({
       data: {
-        name,
+        name: username,
         email,
         passwordHash: hashedPassword,
       },
     });
 
-    return NextResponse.json({ message: 'Usuario registrado con éxito', user: newUser }, { status: 201 });
+    return NextResponse.json({ message: 'User registered with success', user: newUser }, { status: 201 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'Error al registrar el usuario' }, { status: 500 });
+    return NextResponse.json({ error: 'User not registered' }, { status: 500 });
   }
 };

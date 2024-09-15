@@ -14,6 +14,7 @@ import {
 } from "./ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import Link from "next/link"
+import { Button } from "./ui/button"
 
 const HomeRoutes = {
     user: [
@@ -56,6 +57,9 @@ function Header() {
                 <Badge variant="outline"><span>Beta</span></Badge>
             </section>
             <section className="flex items-center gap-4">
+                <Link href="/auth"><Button className={cn("h-9 w-20",
+                    pathName === "/auth" ? "hidden" : "block"
+                )}>Sign In</Button></Link>
                 <Link href="https://github.com/IvanG2002/TinyRoute" target="_blank" className="cursor-pointer">
                     <GitHubLogoIcon className="h-5 w-5"></GitHubLogoIcon>
                 </Link>

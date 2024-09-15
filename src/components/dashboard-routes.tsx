@@ -23,7 +23,9 @@ function DashboardRoute() {
 
     return (
         <div className={cn("flex items-center gap-3 px-4",
-            pathname === "/" ? "hidden" : ""
+            pathname === "/" ? "hidden" : "",
+            pathname === "/auth" ? "hidden" : "",
+            pathname === "/register" ? "hidden" : ""
         )}>
             {DashboardRoutes.map((route) => (
                 <Link
