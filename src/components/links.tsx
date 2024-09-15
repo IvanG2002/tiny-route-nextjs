@@ -6,6 +6,8 @@ import Loading from "./loading"
 import { motion } from "framer-motion"
 import { useCopyToClipboard } from "@/hooks/useClipBoard"
 import { toast } from "sonner"
+import React from "react";
+
 import {
   Dialog,
   DialogContent,

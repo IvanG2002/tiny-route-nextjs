@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import DashboardRoute from "@/components/dashboard-routes";
 import { Toaster } from "sonner";
+import React from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

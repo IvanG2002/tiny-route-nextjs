@@ -1,3 +1,12 @@
+// .eslintrc.json
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "eslint:recommended",
+    "plugin:@next/next/recommended"
+  ],
+  "rules": {
+    "no-unused-vars": "off" // Desactiva la regla para todo el proyecto
+  }
 }
