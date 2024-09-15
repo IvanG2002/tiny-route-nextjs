@@ -10,7 +10,6 @@ export const POST = async (req: NextRequest) => {
 
     try {
         // Inserta la URL en la base de datos
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const createdUrl = await prisma.url.create({
             data: {
                 original_url,
@@ -22,9 +21,8 @@ export const POST = async (req: NextRequest) => {
                 },
             },
         });
-
         // Devuelve la URL acortada
-        return NextResponse.json({ short_url: `https://tiny-route-app.vercel.app/api/shorten/${short_code}` });
+        return NextResponse.json({ short_url: `https://tiny-route-app.vercel.app/api/shorten/${createdUrl.short_code}` });
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'Server error' }, { status: 500 });
